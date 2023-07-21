@@ -193,24 +193,24 @@ a {
 	width: 86%;
 }
 
-#tf .acto_utils {
+#tf .dbt_utils {
 	grid-area: 2/2/3/3;
 }
 
-#tf .acto_utils img {
+#tf .dbt_utils img {
 	width: 90%;
 }
 
-#tf .acto_utils img:hover {
+#tf .dbt_utils img:hover {
 	width: 96%;
 }
 
-#tf .tech_support {
+#tf .skil {
 	grid-area: 2/3/3/4;
 	margin-top: 1vw;
 }
 
-#tf .tech_support img:hover {
+#tf .skil img:hover {
 	width: 86%;
 }
 
