@@ -175,59 +175,59 @@ a {
 	color: grey;
 }
 
-#tf {
+#projects {
 	display: grid;
 	text-align: center;
 }
 
-#tf h2 {
+#projects h2 {
 	grid-area: 1/2/2/3;
 }
 
-#tf .this_website {
+#projects .this_website {
 	grid-area: 2/1/3/2;
 	margin-top: 1vw;
 }
 
-#tf .this_website img:hover {
+#projects .this_website img:hover {
 	width: 86%;
 }
 
-#tf .dbt_utils {
+#projects .skil {
 	grid-area: 2/2/3/3;
 }
 
-#tf .dbt_utils img {
+#projects .skil img {
 	width: 90%;
 }
 
-#tf .dbt_utils img:hover {
+#projects .skil img:hover {
 	width: 96%;
 }
 
-#tf .skil {
+#projects .dbt_utils {
 	grid-area: 2/3/3/4;
 	margin-top: 1vw;
 }
 
-#tf .skil img:hover {
+#projects .dbt_utils img:hover {
 	width: 86%;
 }
 
-#wyaai {
+#etc {
 	display: grid;
 	text-align: center;
 }
 
-#wyaai h2 {
+#etc h2 {
 	grid-area: 1/1/2/3;
 }
 
-#wyaai .contact_me {
+#etc .contact_me {
 	grid-area: 2/1/3/2;
 }
 
-#wyaai .my_blog {
+#etc .my_blog {
 	grid-area: 2/2/3/3;
 }
 
@@ -287,11 +287,11 @@ footer p {
 		text-align: center;
 	}
 
-	#tf {
+	#projects {
 		display: block;
 	}
 
-	#wyaai {
+	#etc {
 		display: block;
 	}
 
