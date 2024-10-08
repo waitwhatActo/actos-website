@@ -194,15 +194,15 @@ a {
 	width: 86%;
 }
 
-#projects .skil {
+#projects .drbc {
 	grid-area: 2/2/3/3;
 }
 
-#projects .skil img {
+#projects .drbc img {
 	width: 90%;
 }
 
-#projects .skil img:hover {
+#projects .drbc img:hover {
 	width: 96%;
 }
 
@@ -232,16 +232,25 @@ a {
 	grid-area: 2/2/3/3;
 }
 
-#specs {
+#specs, #blog {
 	display: grid;
 	text-align: center;
 }
 
-#specs table {
+#specs, #blog table {
 	margin-left: 4.5vw;
 	width: 86vw;
 	margin-bottom: 2vw;
 	line-height: 4vh;
+}
+
+table.specsTable, td, th {
+	border: 1px solid #ffffff;
+	border-collapse: collapse;
+}
+
+table.blogTable, td.blogTable, th.blogTable {
+	border: 0px;
 }
 
 footer {
