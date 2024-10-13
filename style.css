@@ -239,7 +239,8 @@ a {
 
 #specs, #blog table {
 	margin-left: 4.5vw;
-	width: 86vw;
+	margin-right: 4.5vw;
+	width: 91%;
 	margin-bottom: 2vw;
 	line-height: 4vh;
 }
