@@ -10,7 +10,7 @@ body {
     margin-left:5vw;
     margin-right:5vw;
     font-size: min(3vw, 2.5rem);
-    background-image: url("Untitled-4.jpg");
+    background-image: url("/assets/background.jpg");
     background-size: auto 100vh;
     background-position-x: center;
     background-position-y: top;
