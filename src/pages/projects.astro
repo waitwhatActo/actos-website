@@ -6,22 +6,24 @@ const projects = [
         name: "HomeworkSMP",
         description:
             "Community Minecraft server with governance and collaborative builds.",
-        href: "#",
+        href: "https://homeworksmp.gay",
+        hreftext: "Join today",
     },
     {
-        name: "Veltryx Identity",
+        name: "Triathlon",
         description:
-            "Email & identity management system for personal projects.",
-        href: "#",
+            "Student-athlete. A brief look into my journey of progression.",
+        href: "triathlon",
     },
     {
-        name: "Automation Scripts",
-        description: "Daily-use scripts & tooling to streamline workflow.",
-        href: "#",
+        name: "Veltryx",
+        description: "More than just an email.",
+        href: "https://veltryx.xyz",
+        hreftext: "Learn more about Veltryx",
     },
     {
-        name: "Cloud Experiments",
-        description: "Testing networking, VPNs, and cloud infrastructure.",
+        name: "Squid Game",
+        description: "Coming soon...",
         href: "#",
     },
 ];
@@ -35,9 +37,20 @@ const projects = [
             {
                 projects.map((project) => (
                     <div class="bg-neutral-900 p-6 rounded-lg shadow hover:shadow-indigo-500/50 transition">
-                        <h3 class="text-xl font-semibold mb-2">{project.name}</h3>
-                        <p class="text-neutral-400 mb-4">{project.description}</p>
-                        <a href={project.href} class="text-indigo-400 hover:text-indigo-300 font-medium">Learn more →</a>
+                        <h3 class="text-xl font-semibold mb-2">
+                            {project.name}
+                        </h3>
+                        <p class="text-neutral-400 mb-4">
+                            {project.description}
+                        </p>
+                        {project.href !== "#" && (
+                            <a
+                                href={project.href}
+                                class="text-indigo-400 hover:text-indigo-300 font-medium"
+                            >
+                                {(project.hreftext || "Learn more") + " →"}
+                            </a>
+                        )}
                     </div>
                 ))
             }
