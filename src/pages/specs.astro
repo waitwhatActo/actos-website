@@ -1,0 +1,114 @@
+---
+import ActoLayout from "../layouts/ActoLayout.astro";
+
+const devices = [
+    {
+        name: "Summit (PC)",
+        specs: [
+            { key: "CPU", value: "AMD Ryzen 7 5700X3D" },
+            { key: "GPU", value: "Gigabyte Radeon RX 7800 XT" },
+            { key: "RAM", value: "G.Skill Ripjaws V 32GB DDR4-3200 (2 x 16GB)" },
+            { key: "Motherboard", value: "Asus B550-PLUS AC-HES ATX AM4" },
+            { key: "Storage", value: "Samsung 990 Pro 1TB NVMe, Samsung 990 Evo 2TB NVMe" },
+            { key: "OS", value: "Windows 11 Pro" },
+        ],
+    },
+    {
+        name: "Dune (Laptop)",
+        specs: [
+            { key: "CPU", value: "AMD Ryzen 7 PRO 7730U" },
+            { key: "GPU", value: "AMD Radeon Graphics" },
+            { key: "RAM", value: "16GB DDR4-3200 SDRAM (2 x 8GB)" },
+            { key: "Storage", value: "SK Hynix BC901 512GB SSD" },
+            { key: "OS", value: "Windows 11 Pro" },
+        ],
+    },
+    {
+        name: "Awaken (Server)",
+        specs: [
+            { key: "CPU", value: "Intel Core i3-3320" },
+            { key: "GPU", value: "Intel HD Graphics 2500, NVIDIA GeForce GT 710" },
+            { key: "RAM", value: "8GB DDR3-1500 (2 x 4GB)" },
+            { key: "Storage", value: "ADATA SU635 256GB SSD, Seagate Barracuda 500GB HDD, Seagate Pipeline 500GB HDD" },
+            { key: "OS", value: "Ubuntu Server 25.10" },
+        ],
+    },
+    {
+        name: "Flow (Server)",
+        specs: [
+            { key: "CPU", value: "Intel Core i7-1165G7" },
+            { key: "GPU", value: "Intel Iris Xe Graphics" },
+            { key: "RAM", value: "16GB DDR4 (1 x 16GB)" },
+            { key: "Storage", value: "500GB SSD" },
+            { key: "OS", value: "Windows 10 Pro" },
+        ]
+    },
+    {
+        name: "Skystrike (Phone)",
+        specs: [
+            { key: "Model", value: "iPhone 12 Pro" },
+            { key: "CPU", value: "Apple A14 Bionic" },
+            { key: "GPU", value: "Apple GPU" },
+            { key: "RAM", value: "6GB LPDDR4X-3733" },
+            { key: "Storage", value: "128GB UFS 3.1" },
+            { key: "OS", value: "iOS 26.2" },
+        ],
+    },
+    {
+        name: "Forerunner 955 (Watch)",
+        specs: [
+            { key: "Model", value: "Garmin Forerunner 955" },
+            { key: "Display", value: "1.3\" 260 x 260 AMOLED" },
+            { key: "Battery Life", value: "Up to 15 days in smartwatch mode" },
+            { key: "Sensors", value: "GPS, GLONASS, Galileo, Heart Rate, Pulse Oximeter" },
+            { key: "Water Rating", value: "5 ATM" },
+            { key: "Connectivity", value: "Bluetooth, ANT+, Wi-Fi" },
+        ],
+    },
+    {
+        name: "Glome (Tablet)",
+        specs: [
+            { key: "Model", value: "Samsung Galaxy Tab S" },
+            { key: "CPU", value: "Samsung Quad-core Krait 400" },
+            { key: "GPU", value: "Adreno 320" },
+            { key: "RAM", value: "3GB LPDDR3-1866" },
+            { key: "Storage", value: "32GB eMMC 5.1" },
+            { key: "OS", value: "Android 6.0.1" },
+        ]
+    }
+];
+---
+
+<ActoLayout title="Specs">
+    <section class="max-w-3xl mx-auto text-neutral-100 space-y-12">
+        <h2 class="text-3xl font-semibold text-indigo-400">Specs</h2>
+
+        {
+            devices.map((device) => (
+                <div class="space-y-4">
+                    <h3 class="text-2xl font-semibold text-indigo-300">{device.name}</h3>
+
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full border border-neutral-700 rounded">
+                            <thead class="bg-neutral-900">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-neutral-300 font-medium">Component</th>
+                                    <th class="px-6 py-3 text-left text-neutral-300 font-medium">Details</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {device.specs.map((spec) => (
+                                    <tr class="border-t border-neutral-700 hover:bg-neutral-800 transition">
+                                        <td class="px-6 py-3 text-neutral-100">{spec.key}</td>
+                                        <td class="px-6 py-3 text-neutral-100">{spec.value}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            ))
+        }
+    </section>
+</ActoLayout>
