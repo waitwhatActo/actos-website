@@ -2,6 +2,15 @@
 const quicklinks = [
     { name: "Service Status", href: "https://status.veltryx.xyz" },
 ];
+
+const navlinks = [
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Triathlon", href: "/triathlon" },
+    { name: "Specs", href: "/specs" },
+    { name: "Blog", href: "/blog" },
+    { name: "Contact", href: "/contact" },
+]
 ---
 
 <nav class="relative z-50 w-full py-4 border-b border-neutral-900 bg-neutral-950/80 backdrop-blur">
@@ -10,6 +19,9 @@ const quicklinks = [
             <a href="/" class="flex items-center gap-2">
                 <img src="/acto.png" alt="Acto" class="h-12 w-auto transform transition-transform duration-500 hover:scale-110"/>
                 <span class="sr-only">Acto</span>
+                <p>
+                    <span class="text-xl">Acto's Corner</span>
+                </p>
             </a>
             <a href="https://veltryx.xyz" class="flex items-center gap-2">
                 <img src="/logo.png" alt="Veltryx Favicon" class="h-12 w-auto transform transition-transform duration-500 hover:scale-110"/>
@@ -18,12 +30,11 @@ const quicklinks = [
         </div>
 
         <div class="hidden md:flex gap-6 text-neutral-400 items-center">
-            <a href="/about" class="hover:text-indigo-300">About</a>
-            <a href="/projects" class="hover:text-indigo-300">Projects</a>
-            <a href="/triathlon" class="hover:text-indigo-300">Triathlon</a>
-            <a href="/specs" class="hover:text-indigo-300">Specs</a>
-            <a href="/blog" class="hover:text-indigo-300">Blog</a>
-            <a href="/contact" class="hover:text-indigo-300">Contact</a>
+            {
+                navlinks.map((n) => (
+                    <a href={n.href} class="hover:text-indigo-300">{n.name}</a>
+                ))
+            }
 
             <div class="relative">
                 <button data-toggle="quicklinks" class="hover:text-white flex items-center gap-1">
@@ -51,12 +62,11 @@ const quicklinks = [
     </div>
 
     <div id="mobile-menu" class="hidden md:hidden px-4 py-3 border-t border-neutral-800 space-y-2 text-neutral-400">
-        <a href="/about" class="block hover:text-indigo-300">About</a>
-        <a href="/projects" class="block hover:text-indigo-300">Projects</a>
-        <a href="/triathlon" class="block hover:text-indigo-300">Triathlon</a>
-        <a href="/specs" class="block hover:text-indigo-300">Specs</a>
-        <a href="/blog" class="block hover:text-indigo-300">Blog</a>
-        <a href="/contact" class="block hover:text-indigo-300">Contact</a>
+        {
+            navlinks.map((n) => (
+                <a href={n.href} class="block hover:text-indigo-300">{n.name}</a>
+            ))
+        }
 
         <div>
             <button data-toggle="mobile-quicklinks" class="w-full text-left hover:text-white flex items-center justify-between">
