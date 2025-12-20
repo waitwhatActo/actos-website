@@ -3,6 +3,7 @@ const { title = "Acto" } = Astro.props;
 import Navbar from "../components/Navbar.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+const noindex = Astro.props.noindex || false;
 ---
 
 <html lang="en" class="bg-neutral-950 text-neutral-100">
@@ -10,6 +11,13 @@ import "../styles/global.css";
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{title}</title>
+
+        {noindex && (
+            <>
+                <meta name="robots" content="noindex,nofollow" />
+                <meta name="googlebot" content="noindex,nofollow" />
+            </>
+        )}
     </head>
 
     <body class="min-h-screen flex flex-col font-sans">

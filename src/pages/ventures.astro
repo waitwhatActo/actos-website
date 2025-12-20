@@ -1,7 +1,7 @@
 ---
 import ActoLayout from "../layouts/ActoLayout.astro";
 
-const projects = [
+const ventures = [
     {
         name: "HomeworkSMP",
         description:
@@ -10,10 +10,10 @@ const projects = [
         hreftext: "Join today",
     },
     {
-        name: "Triathlon",
+        name: "Athletics",
         description:
-            "Student-athlete. A brief look into my journey of progression.",
-        href: "/triathlon",
+            "Student-athlete. A brief look into my journey of progression in Endurance Sports.",
+        href: "/athletics",
     },
     {
         name: "Veltryx",
@@ -29,26 +29,26 @@ const projects = [
 ];
 ---
 
-<ActoLayout title="Projects">
+<ActoLayout title="Ventures">
     <section class="max-w-5xl mx-auto text-neutral-100">
-        <h2 class="text-3xl font-semibold mb-8 text-indigo-400">Projects</h2>
+        <h2 class="text-3xl font-semibold mb-8 text-indigo-400">Ventures</h2>
 
         <div class="grid md:grid-cols-2 gap-6">
             {
-                projects.map((project) => (
+                ventures.map((ventures) => (
                     <div class="bg-neutral-900 p-6 rounded-lg shadow hover:shadow-indigo-500/50 transition">
                         <h3 class="text-xl font-semibold mb-2">
-                            {project.name}
+                            {ventures.name}
                         </h3>
                         <p class="text-neutral-400 mb-4">
-                            {project.description}
+                            {ventures.description}
                         </p>
-                        {project.href !== "#" && (
+                        {ventures.href !== "#" && (
                             <a
-                                href={project.href}
+                                href={ventures.href}
                                 class="text-indigo-400 hover:text-indigo-300 font-medium"
                             >
-                                {(project.hreftext || "Learn more") + " →"}
+                                {(ventures.hreftext || "Learn more") + " →"}
                             </a>
                         )}
                     </div>
