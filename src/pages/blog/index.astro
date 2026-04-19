@@ -1,9 +1,18 @@
 ---
 import ActoLayout from "../../layouts/ActoLayout.astro";
 
-const posts = await Astro.glob("./*.mdx");
+const postModules = import.meta.glob("./*.mdx", { eager: true });
 
-posts.sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime(),);
+const posts = Object.entries(postModules).map(([path, mod]) => ({
+  url: path.replace(/^\.\//, "/blog/").replace(/\.mdx$/, ""),
+  frontmatter: mod.frontmatter,
+}));
+
+posts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).getTime() -
+    new Date(a.frontmatter.date).getTime()
+);
 ---
 
 <ActoLayout title="Blog">
