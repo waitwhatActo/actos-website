@@ -34,9 +34,27 @@ const { title, date, banner, readingTime = 1 } = frontmatter;
             </div>
         </header>
 
-        <section class="prose prose-invert max-w-full">
-            <slot />
-        </section>
+        <div class="flex flex-col lg:flex-row gap-8 items-start">
+            <section
+                class="post-content prose prose-invert max-w-full flex-1 order-2 lg:order-1"
+            >
+                <slot />
+            </section>
+
+            <aside
+                id="toc"
+                class="lg:sticky top-16 lg:top-24 z-20 w-full lg:w-64 shrink-0 order-1 lg:order-2 self-start"
+            >
+                <div
+                    class="rounded-md p-4 bg-neutral-900/60 border border-neutral-800"
+                >
+                    <h3 class="text-sm font-semibold text-neutral-200 mb-2">
+                        Contents
+                    </h3>
+                    <nav id="toc-list" class="text-sm text-neutral-300"></nav>
+                </div>
+            </aside>
+        </div>
 
         <!-- Back link -->
         <div class="mt-8">
@@ -49,3 +67,114 @@ const { title, date, banner, readingTime = 1 } = frontmatter;
         </div>
     </article>
 </ActoLayout>
+
+<script data‑cfasync="false">
+    (function () {
+        const slugify = (text = "") => {
+            return String(text)
+                .trim()
+                .toLowerCase()
+                .replace(/[^a-z0-9\s-]/g, "")
+                .replace(/\s+/g, "-")
+                .replace(/-+/g, "-");
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const content = document.querySelector(".post-content");
+            const toc = document.getElementById("toc");
+            const tocList = document.getElementById("toc-list");
+            if (!content || !toc || !tocList) return;
+
+            const headings = content.querySelectorAll("h2, h3, h4");
+            const wrap = document.getElementById("post-wrap");
+            const articleEl = document.getElementById("post-article");
+
+            if (!headings.length) {
+                toc.style.display = "none";
+                if (wrap) {
+                    wrap.classList.remove("max-w-6xl");
+                    wrap.classList.add("max-w-5xl");
+                }
+                if (articleEl) {
+                    articleEl.classList.remove("max-w-5xl");
+                    articleEl.classList.add("max-w-4xl");
+                }
+                return;
+            }
+
+            if (wrap) {
+                wrap.classList.remove("max-w-5xl");
+                wrap.classList.add("max-w-6xl");
+            }
+            if (articleEl) {
+                articleEl.classList.remove("max-w-4xl");
+                articleEl.classList.add("max-w-5xl");
+            }
+
+            const ul = document.createElement("ul");
+            ul.className = "space-y-1";
+
+            headings.forEach((h) => {
+                const text = (h.textContent || "").trim();
+                if (!h.id) h.id = slugify(text || "heading");
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = "#" + h.id;
+                a.textContent = text;
+                a.className = "block hover:text-lime-300";
+                const level = parseInt(h.tagName.substring(1), 10);
+                if (level === 3) a.classList.add("pl-3");
+                if (level === 4) a.classList.add("pl-6");
+                li.appendChild(a);
+                ul.appendChild(li);
+            });
+
+            tocList.appendChild(ul);
+
+            tocList.querySelectorAll("a").forEach((a) => {
+                a.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    const href = this.getAttribute("href") || "";
+                    const id = href.startsWith("#") ? href.slice(1) : href;
+                    const target = id ? document.getElementById(id) : null;
+                    if (target)
+                        target.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start",
+                        });
+                    if (href) history.replaceState(null, "", href);
+                });
+            });
+
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        const id = entry.target && entry.target.id;
+                        if (!id) return;
+                        const link = tocList.querySelector(
+                            "a[href='#" + id + "']",
+                        );
+                        if (!link) return;
+                        if (entry.isIntersecting) {
+                            tocList
+                                .querySelectorAll("a")
+                                .forEach((x) =>
+                                    x.classList.remove(
+                                        "text-lime-300",
+                                        "font-semibold",
+                                    ),
+                                );
+                            link.classList.add(
+                                "text-lime-300",
+                                "font-semibold",
+                            );
+                        }
+                    });
+                },
+                { rootMargin: "-40% 0px -55% 0px" },
+            );
+
+            headings.forEach((h) => observer.observe(h));
+        });
+    })();
+</script>

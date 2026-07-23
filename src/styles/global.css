@@ -1,1 +1,26 @@
-@import 'tailwindcss';
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+.bg-layer {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: opacity 1s ease-in-out;
+    z-index: -50;
+    pointer-events: none;
+}
+
+li::marker {
+    color: white;
+}
+
+table,
+th,
+tr,
+td {
+    border-color: #505050;
+}
